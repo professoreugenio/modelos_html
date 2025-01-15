@@ -30,17 +30,29 @@
         #sideMenu ul {
             list-style: none;
             padding: 0;
+            margin: 0;
+        }
+
+        #sideMenu ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #495057;
         }
 
         #sideMenu ul li a {
             color: white;
             text-decoration: none;
-            padding: 15px;
-            display: block;
-            border-bottom: 1px solid #495057;
+            flex-grow: 1;
         }
 
-        #sideMenu ul li a:hover {
+        #sideMenu ul li i {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+
+        #sideMenu ul li:hover {
             background-color: #495057;
         }
 
@@ -88,10 +100,22 @@
         </button>
         <h4 class="p-3 text-center border-bottom">Menu</h4>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#services">Serviços</a></li>
-            <li><a href="#contact">Contato</a></li>
+            <li>
+                <a href="#home">Home</a>
+                <i class="bi bi-house"></i>
+            </li>
+            <li>
+                <a href="#about">Sobre</a>
+                <i class="bi bi-info-circle"></i>
+            </li>
+            <li>
+                <a href="#services">Serviços</a>
+                <i class="bi bi-briefcase"></i>
+            </li>
+            <li>
+                <a href="#contact">Contato</a>
+                <i class="bi bi-envelope"></i>
+            </li>
         </ul>
     </div>
 
