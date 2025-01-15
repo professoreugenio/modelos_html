@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botões Fixos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .fixed-buttons-horz {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+       
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #09441e;
+            color: white;
+        }
+
+        .btn-instagram {
+            background-color: #E4405F;
+            color: white;
+        }
+
+        .btn-instagram:hover {
+            background-color: #570f1c;
+            color: white;
+        }
+
+        .btn-pdf {
+            background-color: #FF0000;
+            color: white;
+        }
+
+        .btn-pdf:hover {
+            background-color: #570202;
+            color: white;
+        }
+
+        .btn-youtube {
+            background-color: #FF0000;
+            color: white;
+        }
+
+        .btn-youtube:hover {
+            background-color: #5e0202;
+            color: white;
+        }
+
+        .btn-certificate {
+            background-color: #0D6EFD;
+            color: white;
+        }
+
+        .btn-certificate:hover {
+            background-color: #0D6EFD;
+            color: white;
+        }
+
+         .btn-circle-horz {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.9s;
+            margin-top: 10px;
+        }
+
+        .btn-circle-horz:hover {
+            opacity: 0.9;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-buttons-horz">
+        <a href="https://wa.me/" class="btn btn-circle-horz btn-whatsapp" target="_blank" title="WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/" class="btn btn-circle-horz btn-instagram" target="_blank" title="Instagram">
+            <i class="bi bi-instagram"></i>
+        </a>
+        <a href="link-para-o-pdf.pdf" class="btn btn-circle-horz btn-pdf" target="_blank" title="PDF">
+            <i class="bi bi-file-earmark-pdf"></i>
+        </a>
+        <a href="https://www.youtube.com/" class="btn btn-circle-horz btn-youtube" target="_blank" title="YouTube">
+            <i class="bi bi-youtube"></i>
+        </a>
+        <a href="link-para-certificado" class="btn btn-circle-horz btn-certificate" target="_blank" title="Certificado">
+            <i class="bi bi-award"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

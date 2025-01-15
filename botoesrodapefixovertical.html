@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botões Fixos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .fixed-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-instagram {
+            background-color: #E4405F;
+            color: white;
+        }
+
+        .btn-pdf {
+            background-color: #FF0000;
+            color: white;
+        }
+
+        .btn-youtube {
+            background-color: #FF0000;
+            color: white;
+        }
+
+        .btn-certificate {
+            background-color: #0D6EFD;
+            color: white;
+        }
+
+        .btn-circle:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-buttons">
+        <a href="https://wa.me/" class="btn btn-circle btn-whatsapp" target="_blank" title="WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/" class="btn btn-circle btn-instagram" target="_blank" title="Instagram">
+            <i class="bi bi-instagram"></i>
+        </a>
+        <a href="link-para-o-pdf.pdf" class="btn btn-circle btn-pdf" target="_blank" title="PDF">
+            <i class="bi bi-file-earmark-pdf"></i>
+        </a>
+        <a href="https://www.youtube.com/" class="btn btn-circle btn-youtube" target="_blank" title="YouTube">
+            <i class="bi bi-youtube"></i>
+        </a>
+        <a href="link-para-certificado" class="btn btn-circle btn-certificate" target="_blank" title="Certificado">
+            <i class="bi bi-award"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
