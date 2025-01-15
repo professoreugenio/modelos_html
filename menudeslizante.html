@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Deslizante</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Estilizando o menu deslizante */
+        #sideMenu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #343a40;
+            color: white;
+            transition: all 0.3s ease-in-out;
+            overflow-y: auto;
+            z-index: 1045;
+            /* Para garantir que fique acima do conteúdo */
+        }
+
+        #sideMenu.show {
+            left: 0;
+        }
+
+        #sideMenu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #sideMenu ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            border-bottom: 1px solid #495057;
+        }
+
+        #sideMenu ul li a:hover {
+            background-color: #495057;
+        }
+
+        /* Botão de fechar no canto superior direito do sideMenu */
+        #menuClose {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1050;
+        }
+
+        #menuClose:hover {
+            background-color: darkred;
+        }
+
+        #menuClose i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botão para abrir o menu -->
+    <div class="container mt-3">
+        <button id="menuToggle" class="btn btn-primary">
+            <i class="bi bi-list"></i> Abrir Menu
+        </button>
+    </div>
+
+    <!-- Menu deslizante -->
+    <div id="sideMenu">
+        <!-- Botão fechar -->
+        <button id="menuClose">
+            <i class="bi bi-x"></i>
+        </button>
+        <h4 class="p-3 text-center border-bottom">Menu</h4>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#services">Serviços</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Selecionando os elementos
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuClose = document.getElementById('menuClose');
+
+        // Evento para abrir o menu
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.toggle('show');
+        });
+
+        // Evento para fechar o menu
+        menuClose.addEventListener('click', () => {
+            sideMenu.classList.remove('show');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
