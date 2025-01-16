@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Profissional</title>
+    <title>Chat com Emojis</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <style>
         body {
             background-color: #f0f4f8;
@@ -15,12 +17,12 @@
 
         .chat-container {
             background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
         }
 
         .chat-messages {
@@ -30,6 +32,7 @@
             padding: 10px;
             display: flex;
             flex-direction: column;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         .message-bubble {
@@ -40,36 +43,86 @@
             font-size: 14px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             word-wrap: break-word;
+            position: relative;
             animation: fadeIn 0.3s ease-in-out;
         }
 
         .user-message {
             background-color: #dcf8c6;
-            /* Verde claro do WhatsApp */
             align-self: flex-end;
             text-align: left;
             border-radius: 10px 10px 0 10px;
+            position: relative;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.31);
         }
 
         .bot-message {
             background-color: #ffffff;
-            /* Branco para mensagens recebidas */
             align-self: flex-start;
             text-align: left;
             border: 1px solid #ddd;
             border-radius: 10px 10px 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            position: relative;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.31);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
+        .bot-message img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .message-time {
+            font-size: 10px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .user-message .message-time {
+            text-align: right;
+        }
+
+        .bot-message-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .emoji-picker {
+            display: none;
+            position: absolute;
+            bottom: 60px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .emoji-picker span {
+            font-size: 12px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .emoji-picker span:hover {
+            background-color: #f0f0f0;
+            border-radius: 50%;
         }
 
         .input-container {
@@ -90,107 +143,242 @@
 
         .input-container textarea {
             width: 70%;
-            padding: 10px;
-            border-radius: 20px;
-            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: 1px solid #4e4e4e;
             resize: none;
             overflow: hidden;
         }
 
         .input-container button {
-            padding: 10px 20px;
+            padding: 3px 5px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 20px;
             cursor: pointer;
+            font-size: 12px;
         }
 
         .input-container button:hover {
             background-color: #0056b3;
         }
 
-        .emoji-picker {
-            position: absolute;
-            bottom: 60px;
-            right: 20px;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: none;
-            padding: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 200px;
-        }
-
-        .emoji {
+        .emoji-btn {
             font-size: 20px;
             cursor: pointer;
+            background: none;
+            border: none;
+            margin: 0 10px;
+            color: #555;
         }
+
+        .emoji-btn:hover {
+            color: #007bff;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 767px) {
+            .chat-container {
+                padding: 10px;
+            }
+
+            .message-bubble {
+                max-width: 100%;
+            }
+
+            .input-container .col-6 {
+                flex-direction: column;
+                width: 100%;
+                align-items: stretch;
+            }
+
+            .input-container textarea {
+                width: 100%;
+            }
+
+            .emoji-picker {
+                bottom: 120px;
+                width: 100%;
+                left: 5%;
+                transform: translateX(-5%);
+            }
+
+            .emoji-btn {
+                margin-right: 0;
+                margin-left: 10px;
+            }
+        }
+
+
+
+        /**NOVO PADRÃO **/
+        /* Estilo para o container do chat */
+.chat-container {
+    background-color: #f0f8ff;  /* Azul claro suave para o fundo */
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para as mensagens */
+.message {
+    background-color: #ffecb3;  /* Amarelo vibrante para as mensagens */
+    color: #333;  /* Texto em cinza escuro */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 15px;
+    max-width: 75%;
+}
+
+/* Estilo para a mensagem do usuário */
+.message.user {
+    background-color: #ff8c00;  /* Laranja vibrante */
+    color: white;
+    align-self: flex-end;
+}
+
+/* Estilo para o painel de emojis */
+.emoji-panel {
+    background-color: #ff4081;  /* Rosa vibrante */
+    border-radius: 10px;
+    padding: 10px;
+    display: none;  /* Começa escondido */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para os botões de enviar e emojis */
+.send-button, .emoji-button {
+    background-color: #00bcd4;  /* Azul vibrante */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover, .emoji-button:hover {
+    background-color: #0097a7;  /* Azul mais escuro no hover */
+}
+
+/* Estilo para o campo de mensagem */
+.message-input {
+    background-color: #fff;  /* Fundo branco */
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #00bcd4;  /* Borda azul vibrante */
+    width: 100%;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.message-input:focus {
+    border-color: #ff8c00;  /* Laranja vibrante ao focar */
+}
+
+/* Estilo para o container do cabeçalho (se houver) */
+.chat-header {
+    background-color: #00bcd4;  /* Azul vibrante */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+}
     </style>
 </head>
 
 <body>
     <div class="container py-5">
         <div class="row justify-content-center">
-            <div class="col-6 chat-container">
+            <div class="col-12 col-md-6 chat-container">
                 <div class="chat-messages" id="chatMessages">
-                    <div class="message-bubble bot-message">Olá, como posso te ajudar?</div>
-                    <div class="message-bubble user-message">Olá, estou com uma dúvida no curso de Excel.</div>
+                    <div class="bot-message">
+                        <img src="https://professoreugenio.com/fotos/usuarios/usuario.jpg" alt="Usuário">
+                        <div class="bot-message-content">
+                            <div>Olá, como posso te ajudar?</div>
+                            <div class="message-time">10:00</div>
+                        </div>
+                    </div>
+                    <div class="user-message">
+                        <div>Olá, estou com uma dúvida no curso de Excel.</div>
+                        <div class="message-time">10:02</div>
+                    </div>
+                    <!-- Mais mensagens aqui... -->
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Input para Envio de Mensagens -->
     <div class="input-container">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-6">
-                    <button id="emojiButton" style="background: none; border: none; cursor: pointer;">😀</button>
+                <div class="col-12 col-md-6">
                     <textarea id="messageInput" rows="1" placeholder="Digite sua mensagem"></textarea>
-                    <button id="sendButton">Enviar</button>
-                    <div class="emoji-picker" id="emojiPicker">
-                        <span class="emoji">😀</span>
-                        <span class="emoji">😂</span>
-                        <span class="emoji">😍</span>
-                        <span class="emoji">😎</span>
-                        <span class="emoji">😢</span>
-                        <span class="emoji">👍</span>
-                        <span class="emoji">🙏</span>
-                        <span class="emoji">❤️</span>
-                    </div>
+                    <button class="emoji-btn" id="emojiToggle">😊</button>
+                    <button id="sendButton">
+                        <i class="bi bi-send"></i>
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Picker de Emojis -->
+    <div class="emoji-picker" id="emojiPicker">
+        <span>😀</span><span>😁</span><span>😂</span><span>🤣</span><span>😊</span>
+        <span>😍</span><span>😎</span><span>🙃</span><span>🤔</span><span>😴</span>
+        <span>🥳</span><span>🤩</span><span>🤓</span><span>😢</span><span>😡</span>
+        <!-- Adicione mais emojis conforme necessário -->
     </div>
 
     <script>
         const chatMessages = document.getElementById('chatMessages');
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
-        const emojiButton = document.getElementById('emojiButton');
+        const emojiToggle = document.getElementById('emojiToggle');
         const emojiPicker = document.getElementById('emojiPicker');
 
-        // Função para enviar mensagem
+        function formatTime() {
+            const now = new Date();
+            return now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        }
+
         function sendMessage() {
             const message = messageInput.value.trim();
             if (message) {
-                const messageBubble = document.createElement('div');
-                messageBubble.classList.add('message-bubble', 'user-message');
-                messageBubble.textContent = message;
-                chatMessages.appendChild(messageBubble);
-                messageInput.value = ''; // Limpa o campo de texto
-                messageInput.style.height = 'auto'; // Reseta altura do input
-                chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para o final
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message-bubble', 'user-message');
+                userMessage.innerHTML = `
+                    <div>${message}</div>
+                    <div class="message-time">${formatTime()}</div>
+                `;
+                chatMessages.appendChild(userMessage);
+                messageInput.value = '';
+                messageInput.style.height = 'auto';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         }
 
-        // Clique no botão de envio
         sendButton.addEventListener('click', sendMessage);
 
-        // Pressionar Enter para enviar mensagem
         messageInput.addEventListener('keydown', function (event) {
             if (event.key === 'Enter' && !event.shiftKey) {
                 event.preventDefault();
@@ -198,24 +386,24 @@
             }
         });
 
-        // Expansão do campo de texto
+        emojiToggle.addEventListener('click', function () {
+            emojiPicker.style.display = emojiPicker.style.display === 'block' ? 'none' : 'block';
+        });
+
+        emojiPicker.addEventListener('click', function (event) {
+            if (event.target.tagName === 'SPAN') {
+                messageInput.value += event.target.textContent;
+                messageInput.focus();
+            }
+        });
+
         messageInput.addEventListener('input', function () {
             this.style.height = 'auto';
             this.style.height = this.scrollHeight + 'px';
         });
 
-        // Exibir/ocultar emoji picker
-        emojiButton.addEventListener('click', function () {
-            emojiPicker.style.display = emojiPicker.style.display === 'flex' ? 'none' : 'flex';
-        });
 
-        // Inserir emoji no campo de texto
-        emojiPicker.addEventListener('click', function (event) {
-            if (event.target.classList.contains('emoji')) {
-                messageInput.value += event.target.textContent;
-                messageInput.focus();
-            }
-        });
+        
     </script>
 </body>
 
