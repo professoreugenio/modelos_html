@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página com Canvas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1e1e2f;
+            color: #fff;
+        }
+
+        .main-container {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .main-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f8f9fa;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            background: #4e4e70;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #6b6b93;
+        }
+
+        /* Canvas */
+        .canvas {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            height: 100%;
+            width: 300px;
+            background: #24243e;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .canvas.active {
+            left: 0;
+        }
+
+        .canvas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .canvas-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .canvas-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .canvas-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .canvas-content ul li {
+            margin: 10px 0;
+        }
+
+        .canvas-content ul li i {
+            margin-right: 10px;
+            color: #17a2b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <h1>Página com Off-Canvas</h1>
+        <div class="btn-container">
+            <button class="btn" data-target="canvas1">Abrir Lições</button>
+            <button class="btn" data-target="canvas2">Abrir Anexos</button>
+            <button class="btn" data-target="canvas3">Abrir Atividades</button>
+        </div>
+    </div>
+
+    <!-- Canvas 1 -->
+    <div id="canvas1" class="canvas">
+        <div class="canvas-header">
+            <h2>Lições</h2>
+            <button class="close-btn" data-target="canvas1">&times;</button>
+        </div>
+        <div class="canvas-content">
+            <ul>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+                <li><i class="bi bi-book"></i> Módulo 3: Projetos Reais</li>
+                <li><i class="bi bi-book"></i> Conclusão</li>
+                <li><i class="bi bi-book"></i> Lições Extras</li>
+                <li><i class="bi bi-book"></i> Materiais Complementares</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Canvas 2 -->
+    <div id="canvas2" class="canvas">
+        <div class="canvas-header">
+            <h2>Anexos</h2>
+            <button class="close-btn" data-target="canvas2">&times;</button>
+        </div>
+        <div class="canvas-content">
+            <p>Baixe os arquivos complementares para o curso:</p>
+            <ul>
+                <li><i class="bi bi-file-earmark"></i> Apostila.pdf</li>
+                <li><i class="bi bi-file-earmark"></i> Exercícios.zip</li>
+                <li><i class="bi bi-file-earmark"></i> Projetos.zip</li>
+                <li><i class="bi bi-file-earmark"></i> Referências.docx</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Canvas 3 -->
+    <div id="canvas3" class="canvas">
+        <div class="canvas-header">
+            <h2>Atividades</h2>
+            <button class="close-btn" data-target="canvas3">&times;</button>
+        </div>
+        <div class="canvas-content">
+            <p>Pratique com as atividades a seguir:</p>
+            <ul>
+                <li><i class="bi bi-pencil"></i> Quiz de Revisão</li>
+                <li><i class="bi bi-pencil"></i> Exercícios Práticos</li>
+                <li><i class="bi bi-pencil"></i> Avaliação Final</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Seleciona todos os botões e os canvases
+        const buttons = document.querySelectorAll('.btn');
+        const canvases = document.querySelectorAll('.canvas');
+
+        // Adiciona evento de clique nos botões
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const canvas = document.getElementById(targetId);
+
+                // Verifica se o canvas já está ativo
+                const isActive = canvas.classList.contains('active');
+
+                // Fecha todos os canvases
+                canvases.forEach(c => c.classList.remove('active'));
+
+                // Se não estava ativo, ativa o canvas; caso contrário, fecha
+                if (!isActive) {
+                    canvas.classList.add('active');
+                }
+            });
+        });
+
+        // Adiciona evento de clique nos botões de fechar
+        const closeButtons = document.querySelectorAll('.close-btn');
+        closeButtons.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                const targetId = closeBtn.getAttribute('data-target');
+                document.getElementById(targetId).classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

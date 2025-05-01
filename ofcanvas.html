@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página com Canvas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1e1e2f;
+            color: #fff;
+        }
+
+        .main-container-canvas {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .main-container-canvas h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f8f9fa;
+        }
+
+        .btn-container-canvas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-canvas {
+            background: #4e4e70;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-canvas:hover {
+            background: #6b6b93;
+        }
+
+        /* Canvas */
+        .canvas {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            height: 100%;
+            width: 300px;
+            background: #24243e;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .canvas.active {
+            left: 0;
+        }
+
+        .canvas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .canvas-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        .close-btn-canvas {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .canvas-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .canvas-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .canvas-content ul li {
+            margin: 10px 0;
+        }
+
+        .canvas-content ul li i {
+            margin-right: 10px;
+            color: #17a2b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container-canvas">
+        <h1>Página com Off-Canvas</h1>
+        <div class="btn-container-canvas">
+            <button class="btn-canvas" data-target="canvas1">Abrir Lições</button>
+            <button class="btn-canvas" data-target="canvas2">Abrir Anexos</button>
+            <button class="btn-canvas" data-target="canvas3">Abrir Atividades</button>
+        </div>
+    </div>
+
+    <!-- Canvas 1 -->
+    <div id="canvas1" class="canvas">
+        <div class="canvas-header">
+            <h2>Lições</h2>
+            <button class="close-btn-canvas" data-close="canvas1">&times;</button>
+        </div>
+        <div class="canvas-content">
+            <ul>
+                <li><i class="bi bi-book"></i> Introdução ao Curso</li>
+                <li><i class="bi bi-book"></i> Módulo 1: Fundamentos</li>
+                <li><i class="bi bi-book"></i> Módulo 2: Aplicações Práticas</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Canvas 2 -->
+    <div id="canvas2" class="canvas">
+        <div class="canvas-header">
+            <h2>Anexos</h2>
+            <button class="close-btn-canvas" data-close="canvas2">&times;</button>
+        </div>
+        <div class="canvas-content">
+            <p>Baixe os arquivos complementares para o curso:</p>
+            <ul>
+                <li><i class="bi bi-file-earmark"></i> Apostila.pdf</li>
+                <li><i class="bi bi-file-earmark"></i> Exercícios.zip</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Canvas 3 -->
+    <div id="canvas3" class="canvas">
+        <div class="canvas-header">
+            <h2>Atividades</h2>
+            <button class="close-btn-canvas" data-close="canvas3">&times;</button>
+        </div>
+        <div class="canvas-content">
+            <p>Pratique com as atividades a seguir:</p>
+            <ul>
+                <li><i class="bi bi-pencil"></i> Quiz de Revisão</li>
+                <li><i class="bi bi-pencil"></i> Exercícios Práticos</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Abrir canvas
+        const buttons = document.querySelectorAll('.btn-canvas');
+        const canvases = document.querySelectorAll('.canvas');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const target = button.getAttribute('data-target');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // Fechar canvas
+        const closeButtons = document.querySelectorAll('.close-btn-canvas');
+        closeButtons.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                const target = closeBtn.getAttribute('data-close');
+                document.getElementById(target).classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
