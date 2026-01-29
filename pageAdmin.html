@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Painel Admin — Vídeos</title>
+    <meta name="description" content="Painel administrativo de vídeos com atalhos, análises e histórico." />
+    <!-- Social / Share -->
+    <meta property="og:title" content="Painel Admin — Vídeos" />
+    <meta property="og:description" content="Painel administrativo de vídeos com atalhos, análises e histórico." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://professoreugenio.com/img/logosite.png" />
+    <meta property="og:url" content="#" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Painel Admin — Vídeos" />
+    <meta name="twitter:description" content="Painel administrativo de vídeos com atalhos, análises e histórico." />
+    <meta name="twitter:image" content="https://professoreugenio.com/img/logosite.png" />
+    <!-- Bootstrap 5.3+ (jsDelivr) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/hero-analytics.css">
+    <link rel="stylesheet" href="assets/css/history.css">
+
+</head>
+
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <button id="btnSidebarToggle" type="button" class="btn-sidebar-float" aria-label="Menu">
+        <i class="bi bi-list"></i>
+    </button>
+    <div class="app-shell sidebar-open-desktop">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" data-aos="fade-right" data-aos-duration="650">
+            <div class="brand mb-2">
+                <div class="logo">P</div>
+                <div>
+                    <div class="fw-bold">Professor Eugênio</div>
+                    <div class="text-secondary small">Painel de Vídeos</div>
+                </div>
+            </div>
+            <div class="side-section-title">Menu</div>
+            <a class="side-link active" href="#">
+                <i class="bi bi-house-door"></i>
+                <span>Página inicial</span>
+            </a>
+            <a class="side-link" href="#">
+                <i class="bi bi-play-btn"></i>
+                <span>Assistir</span>
+            </a>
+            <div class="side-section-title">Biblioteca</div>
+            <a class="side-link" href="#">
+                <i class="bi bi-collection-play"></i>
+                <span>Biblioteca</span>
+            </a>
+            <a class="side-link" href="#">
+                <i class="bi bi-broadcast"></i>
+                <span>Eventos ao vivo</span>
+            </a>
+            <a class="side-link" href="#">
+                <i class="bi bi-window-stack"></i>
+                <span>Vitrines</span>
+            </a>
+            <a class="side-link" href="#">
+                <i class="bi bi-graph-up"></i>
+                <span>Análises</span>
+            </a>
+            <!-- <div class="side-section-title">Favoritos</div>
+            <div class="px-2">
+                <p class="small text-secondary mb-2">
+                    Passe o mouse sobre uma pasta ou vídeo para adicionar aos favoritos.
+                </p>
+            </div> -->
+            <div class="storage" data-aos="fade-up" data-aos-delay="120">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <div class="fw-bold">Armazenamento</div>
+                        <div class="text-secondary small">0 de 1 GB</div>
+                    </div>
+                    <button class="btn btn-sm btn-primary rounded-pill px-3">
+                        Upgrade
+                    </button>
+                </div>
+                <div class="progress mt-3" role="progressbar" aria-label="Progresso" aria-valuenow="10"
+                    aria-valuemin="0" aria-valuemax="100" style="height:10px">
+                    <div class="progress-bar" style="width:10%"></div>
+                </div>
+            </div>
+        </aside>
+        <!-- MAIN -->
+        <main class="main">
+            <!-- TOPBAR -->
+            <div class="topbar" data-aos="fade-down" data-aos-duration="600">
+                <div class="search position-relative">
+                    <i class="bi bi-search icon"></i>
+                    <input class="form-control" type="search" placeholder="Pesquisar tudo" aria-label="Pesquisar" />
+                </div>
+                <button class="pill-btn">
+                    <i class="bi bi-globe2"></i>
+                    <span class="d-none d-sm-inline">PT-BR</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <button class="pill-btn">
+                    <i class="bi bi-bell"></i>
+                </button>
+                <button class="btn btn-dark rounded-pill d-flex align-items-center gap-2" style="height:46px;">
+                    <i class="bi bi-plus-lg"></i>
+                    <span>Criar</span>
+                </button>
+                <button class="pill-btn">
+                    <i class="bi bi-person-circle"></i>
+                </button>
+            </div>
+            <!-- QUICK ACTIONS -->
+            <section class="quick-actions" data-aos="fade-up" data-aos-delay="80">
+                <a class="qa-item" href="#">
+                    <div class="qa-icon"><i class="bi bi-cloud-upload"></i></div>
+                    <div>
+                        <p class="qa-title">Carregar</p>
+                        <p class="qa-sub">do computador</p>
+                    </div>
+                </a>
+                <a class="qa-item" href="#">
+                    <div class="qa-icon"><i class="bi bi-download"></i></div>
+                    <div>
+                        <p class="qa-title">Importar</p>
+                        <p class="qa-sub">do Drive e mais</p>
+                    </div>
+                </a>
+                <a class="qa-item" href="#">
+                    <div class="qa-icon"><i class="bi bi-magic"></i></div>
+                    <div>
+                        <p class="qa-title">Criar</p>
+                        <p class="qa-sub">novo ou modelo</p>
+                    </div>
+                </a>
+                <a class="qa-item" href="#">
+                    <div class="qa-icon"><i class="bi bi-camera-video"></i></div>
+                    <div>
+                        <p class="qa-title">Gravar</p>
+                        <p class="qa-sub">tela ou webcam</p>
+                    </div>
+                </a>
+                <a class="qa-item" href="#">
+                    <div class="qa-icon"><i class="bi bi-calendar2-event"></i></div>
+                    <div>
+                        <p class="qa-title">Organizar</p>
+                        <p class="qa-sub">evento/webinar</p>
+                    </div>
+                </a>
+            </section>
+            <!-- HERO + ANALYTICS -->
+            <section class="hero-wrap" data-aos="fade-up" data-aos-delay="140">
+                <!-- HERO -->
+                <div class="hero-banner card-soft">
+                    <div>
+                        <div class="hero-kicker">
+                            <i class="bi bi-stars"></i>
+                            <span>E agora?</span>
+                        </div>
+                        <div class="hero-title">Comece com um vídeo de amostra</div>
+                        <p class="hero-text">
+                            Explore ferramentas de vídeo com um conteúdo de teste. Use este painel para publicar,
+                            organizar e acompanhar desempenho.
+                        </p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="btn btn-primary rounded-pill px-4">
+                                Experimente
+                            </button>
+                            <button class="btn btn-outline-secondary rounded-pill px-4">
+                                Ver guia rápido
+                            </button>
+                        </div>
+                        <div class="mt-3 small text-secondary">
+                            <i class="bi bi-shield-check me-1"></i>
+                            Boas práticas: mantenha vídeos privados até finalizar a revisão.
+                        </div>
+                    </div>
+                    <!-- <div class="hero-media">
+                        <div class="fake-player">
+                            <div class="play"><i class="bi bi-play-fill"></i></div>
+                            <div class="timeline"><span></span></div>
+                            <div class="text-white small opacity-75 d-none d-md-block">00:43 / 03:20</div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- ANALYTICS -->
+                <div class="card-soft analytics">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fw-bold fs-5">Análises</div>
+                            <div class="text-secondary small">De 1 out. a 1 nov.</div>
+                        </div>
+                        <button class="btn btn-sm btn-light rounded-pill border">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="chart">
+                        <div>
+                            <div class="fw-bold mb-1">Veja o desempenho dos seus vídeos</div>
+                            <div class="small">Acompanhe visualizações, impressões e métricas.</div>
+                            <div class="d-flex gap-2 justify-content-center flex-wrap mt-3">
+                                <span class="badge text-bg-light border">Visualizações</span>
+                                <span class="badge text-bg-light border">Impressões</span>
+                                <span class="badge text-bg-light border">Únicas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mini-note m-0">
+                        Dica: padronize títulos e capas para melhorar cliques.
+                    </p>
+                </div>
+            </section>
+            <!-- HISTORY -->
+            <section data-aos="fade-up" data-aos-delay="160">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="section-title">Histórico de visualizações</div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-light border rounded-circle" title="Anterior">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="btn btn-light border rounded-circle" title="Próximo">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="thumb-grid">
+                    <article class="thumb" data-aos="zoom-in" data-aos-delay="40">
+                        <div class="img">
+                            <div class="badge-overlay">SP</div>
+                        </div>
+                        <div class="meta">
+                            <p class="t">Aula 01 — Introdução</p>
+                            <p class="s">Atualizado há 2 dias • 1.240 views</p>
+                        </div>
+                    </article>
+                    <article class="thumb" data-aos="zoom-in" data-aos-delay="80">
+                        <div class="img" style="background: linear-gradient(135deg, #111827, #16a34a);">
+                            <div class="badge-overlay">SP</div>
+                        </div>
+                        <div class="meta">
+                            <p class="t">Aula 02 — Upload e Organização</p>
+                            <p class="s">Atualizado hoje • 980 views</p>
+                        </div>
+                    </article>
+                    <article class="thumb" data-aos="zoom-in" data-aos-delay="120">
+                        <div class="img" style="background: linear-gradient(135deg, #0b1020, #f97316);">
+                            <div class="badge-overlay">SP</div>
+                        </div>
+                        <div class="meta">
+                            <p class="t">Aula 03 — Player e Qualidade</p>
+                            <p class="s">Atualizado há 5 dias • 2.015 views</p>
+                        </div>
+                    </article>
+                    <article class="thumb" data-aos="zoom-in" data-aos-delay="160">
+                        <div class="img" style="background: linear-gradient(135deg, #0f172a, #06b6d4);">
+                            <div class="badge-overlay">SP</div>
+                        </div>
+                        <div class="meta">
+                            <p class="t">Aula 04 — Métricas e Relatórios</p>
+                            <p class="s">Atualizado há 1 semana • 740 views</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <!-- FOOTER -->
+            <footer class="mt-4 text-center text-secondary small" data-aos="fade-up">
+                © <span id="ano"></span> Professor Eugênio — Painel Admin
+            </footer>
+        </main>
+    </div>
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // AOS
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 80
+        });
+        // Ano
+        document.getElementById('ano').textContent = new Date().getFullYear();
+    </script>
+    <!-- ✅ 3) JS (troque o seu pelo abaixo) -->
+    <script src="assets/js/sideBar.js"></script>
+</body>
+
+</html>

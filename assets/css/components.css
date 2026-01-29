@@ -1,0 +1,91 @@
+/* Botões pill */
+.pill-btn {
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    height: 46px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none !important;
+}
+
+.pill-btn:hover {
+    background: rgba(15, 23, 42, .03);
+}
+
+/* Card base */
+.card-soft {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, .04);
+}
+
+/* Quick actions */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+@media (max-width:1200px) {
+    .quick-actions {
+        grid-template-columns: repeat(3, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width:768px) {
+    .quick-actions {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width:480px) {
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+.qa-item {
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none !important;
+    color: var(--text) !important;
+}
+
+.qa-item:hover {
+    background: rgba(15, 23, 42, .03);
+}
+
+.qa-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(79, 70, 229, .10);
+    color: #4f46e5;
+    font-size: 1.2rem;
+    flex: 0 0 auto;
+}
+
+.qa-title {
+    font-weight: 700;
+    margin: 0;
+    font-size: .98rem;
+}
+
+.qa-sub {
+    margin: 0;
+    color: var(--muted);
+    font-size: .86rem;
+}

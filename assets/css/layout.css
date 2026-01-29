@@ -1,0 +1,36 @@
+.main {
+    padding: 18px;
+   
+    /* espaço para botão flutuante */
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.search {
+    flex: 1 1 520px;
+    min-width: 260px;
+    position: relative;
+}
+
+.search .form-control {
+    border-radius: 999px;
+    padding-left: 44px;
+    height: 46px;
+    border: 1px solid var(--line);
+    background: #fff;
+}
+
+.search .icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+}

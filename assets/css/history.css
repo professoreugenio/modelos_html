@@ -1,0 +1,82 @@
+.section-title {
+    font-weight: 800;
+    margin: 18px 0 10px;
+}
+
+.thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+@media (max-width:1200px) {
+    .thumb-grid {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width:992px) {
+    .thumb-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width:520px) {
+    .thumb-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.thumb {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #fff;
+}
+
+.thumb .img {
+    height: 140px;
+    background: linear-gradient(135deg, #0f172a, #334155);
+    position: relative;
+}
+
+.thumb .img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, .18), transparent 55%);
+    pointer-events: none;
+}
+
+.badge-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, .92);
+    border: 1px solid rgba(15, 23, 42, .08);
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.thumb .meta {
+    padding: 12px 14px;
+}
+
+.thumb .meta .t {
+    font-weight: 800;
+    margin: 0 0 4px;
+}
+
+.thumb .meta .s {
+    margin: 0;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* PATCH: espaço real para o botão flutuante */
+.main {
+    /* padding-top: 92px !important; */
+    /* era 64px: aumentamos para não invadir o HERO */
+}
