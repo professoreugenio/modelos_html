@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aula — Curso Online | Professor Eugênio</title>
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-h1: #00BB9C;
+            --brand-h2: #FF9C00;
+            --brand-bg: #f9fafb;
+            --brand-text: #212529;
+        }
+
+        body {
+            background: var(--brand-bg);
+            color: var(--brand-text);
+        }
+
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
+        }
+
+        .nav-link,
+        .navbar-brand {
+            color: #212529 !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-h1) !important;
+        }
+
+        h1,
+        .h1 {
+            color: var(--brand-h1);
+        }
+
+        h2,
+        .h2 {
+            color: var(--brand-h2);
+        }
+
+        .badge-soft {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+        }
+
+        .progress {
+            background: #e5e7eb;
+            height: 10px;
+        }
+
+        .progress-bar {
+            background: var(--brand-h1);
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Vídeo responsivo */
+        .video-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+            background: #000;
+        }
+
+        .video-wrap iframe,
+        .video-wrap video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+        }
+
+        /* Rodapé fixo */
+        .footer-fixed {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ffffffcc;
+            backdrop-filter: saturate(1.5) blur(6px);
+            border-top: 1px solid #e5e7eb;
+            z-index: 1030;
+        }
+
+        .footer-fixed .btn {
+            min-width: 140px;
+        }
+
+        .section-gap {
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR (mesmo padrão) -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <!-- Trocar pela foto/nome do aluno -->
+                <img src="https://professoreugenio.com/fotos/usuarios/usuario.png" alt="Foto do aluno" class="avatar">
+                <span class="fw-semibold">Nome do Aluno</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nv"
+                aria-controls="nv" aria-expanded="false" aria-label="Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="nv" class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-house-door me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-mortarboard me-1"></i>Curso</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-chat-dots me-1"></i>Contato</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="#"><i
+                                class="bi bi-x-circle me-1"></i>Fechar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CABEÇALHO: Módulo + Progresso + Ações -->
+    <header class="container section-gap">
+        <div class="row align-items-center g-3">
+            <div class="col-lg-8" data-aos="fade-right">
+                <!-- Trocar pelo nome real do módulo -->
+                <h1 class="h4 mb-2">Nome do Módulo</h1>
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between small mb-1">
+                            <span>Progresso do módulo</span>
+                            <span><strong id="pctLabel">64%</strong></span>
+                        </div>
+                        <div class="progress rounded-pill">
+                            <div class="progress-bar" id="pctBar" style="width:64%" role="progressbar"
+                                aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <span class="badge badge-soft px-3 py-2">18 de 28 lições</span>
+                </div>
+            </div>
+
+            <!-- Ações rápidas -->
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <div class="btn-group" role="group" aria-label="Links úteis">
+                    <a href="#" class="btn btn-outline-success btn-sm"><i class="bi bi-grid-3x3-gap me-1"></i>Todos os
+                        módulos</a>
+                    <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-list-ul me-1"></i>Voltar para
+                        lições</a>
+                    <a href="#" class="btn btn-outline-warning btn-sm"><i
+                            class="bi bi-clipboard-check me-1"></i>Atividades</a>
+                    <a href="#" class="btn btn-outline-dark btn-sm"><i class="bi bi-upload me-1"></i>Upload</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BLOCO: Aula (número + título) -->
+    <section class="container section-gap">
+        <div class="card p-3" data-aos="fade-up">
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <!-- Trocar pelo número e título da aula -->
+                <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-3 px-3 py-2 bg-success-subtle text-success fw-bold">Aula <span
+                            id="numAula">01</span></div>
+                    <h2 class="h5 m-0">Título da Aula</h2>
+                </div>
+
+                <!-- (Opcional) Info curta de duração/status -->
+                <div class="small text-muted mt-2 mt-sm-0">
+                    <i class="bi bi-clock-history me-1"></i><span>12 min</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VÍDEO -->
+    <section class="container">
+        <div class="video-wrap" data-aos="zoom-in">
+            <!-- Trocar pelo player/iframe real -->
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo da aula"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- TEXTO DA AULA -->
+    <section class="container section-gap">
+        <div class="card p-4" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="h6 text-uppercase text-muted mb-3">Conteúdo da aula</h3>
+            <!-- Trocar pelo texto real (suporta HTML/formatado) -->
+            <div class="content">
+                <p>
+                    Bem-vindo(a) à aula! Aqui você verá os principais conceitos e práticas para dominar o tema proposto.
+                    Utilize o <strong>caderno de anotações</strong> para registrar dúvidas e insights.
+                </p>
+                <p>
+                    Tópicos abordados:
+                    <br>– Conceito 1<br>– Conceito 2<br>– Conceito 3
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPAÇO para não cobrir conteúdo pelo rodapé fixo -->
+    <div style="height:88px;"></div>
+
+    <!-- RODAPÉ FIXO: navegação e modais -->
+    <div class="footer-fixed py-2">
+        <div class="container d-flex align-items-center justify-content-between gap-2 flex-wrap">
+
+            <div class="d-flex gap-2">
+                <!-- Trocar hrefs por rotas reais -->
+                <a href="#" class="btn btn-outline-secondary"><i class="bi bi-arrow-left-circle me-1"></i> Voltar</a>
+                <a href="#" class="btn btn-primary"><i class="bi bi-arrow-right-circle me-1"></i> Avançar</a>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalAnotacoes">
+                    <i class="bi bi-journal-text me-1"></i> Caderno de Anotações
+                </button>
+                <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalDepoimento">
+                    <i class="bi bi-chat-left-quote me-1"></i> Deixar Depoimento
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Caderno de Anotações -->
+    <div class="modal fade" id="modalAnotacoes" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-journal-text me-2"></i>Caderno de Anotações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <!-- Você pode identificar por aluno/módulo/aula no backend.
+                 Aqui uso localStorage para rascunho rápido. -->
+                        <label for="campoAnotacoes" class="form-label">Suas anotações desta aula</label>
+                        <textarea id="campoAnotacoes" class="form-control" rows="10"
+                            placeholder="Escreva aqui suas anotações..."></textarea>
+                    </div>
+                    <div class="small text-muted">
+                        Dica: copie/cole suas anotações em um documento à parte ou utilize o botão “Exportar .txt”.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnLimparNotas" class="btn btn-outline-danger"><i
+                            class="bi bi-trash3 me-1"></i>Limpar</button>
+                    <button id="btnExportarNotas" class="btn btn-outline-secondary"><i
+                            class="bi bi-download me-1"></i>Exportar .txt</button>
+                    <button id="btnSalvarNotas" class="btn btn-success"><i class="bi bi-save2 me-1"></i>Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Depoimento -->
+    <div class="modal fade" id="modalDepoimento" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-chat-left-quote me-2"></i>Deixe seu depoimento sobre esta
+                        aula</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <label class="form-label">Seu depoimento</label>
+                            <textarea id="campoDepoimento" class="form-control" rows="6"
+                                placeholder="Conte como esta aula te ajudou..."></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Sua nota</label>
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-star-fill text-warning fs-5" data-rate="1"></i>
+                                <i class="bi bi-star-fill text-warning fs-5" data-rate="2"></i>
+                                <i class="bi bi-star-fill text-warning fs-5" data-rate="3"></i>
+                                <i class="bi bi-star-fill text-warning fs-5" data-rate="4"></i>
+                                <i class="bi bi-star text-warning fs-5" data-rate="5" id="estrela5"></i>
+                            </div>
+                            <input type="hidden" id="notaDepoimento" value="4">
+                            <small class="text-muted d-block mt-2">Clique nas estrelas para ajustar.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- Em produção, enviar via AJAX para seu endpoint -->
+                    <button id="btnEnviarDepoimento" class="btn btn-success"><i
+                            class="bi bi-send-check me-1"></i>Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });
+
+        // --------- Notas (localStorage como rascunho) ----------
+        const KEY_NOTAS = 'notas_aula_01'; // troque para chave dinâmica (ex: modulo_id + aula_id + usuario_id)
+        const campoAnotacoes = document.getElementById('campoAnotacoes');
+
+        // Carregar notas salvas
+        document.getElementById('modalAnotacoes').addEventListener('shown.bs.modal', () => {
+            const salvo = localStorage.getItem(KEY_NOTAS) || '';
+            campoAnotacoes.value = salvo;
+            campoAnotacoes.focus();
+        });
+
+        document.getElementById('btnSalvarNotas').addEventListener('click', () => {
+            localStorage.setItem(KEY_NOTAS, campoAnotacoes.value || '');
+            // Em produção: enviar via AJAX para salvar no banco (usuario/modulo/aula)
+        });
+
+        document.getElementById('btnLimparNotas').addEventListener('click', () => {
+            campoAnotacoes.value = '';
+            localStorage.removeItem(KEY_NOTAS);
+        });
+
+        document.getElementById('btnExportarNotas').addEventListener('click', () => {
+            const blob = new Blob([campoAnotacoes.value || ''], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'anotacoes_aula.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // --------- Depoimento (marcação simples de estrelas) ----------
+        const estrelas = document.querySelectorAll('#modalDepoimento .bi-star, #modalDepoimento .bi-star-fill');
+        const notaHidden = document.getElementById('notaDepoimento');
+
+        estrelas.forEach((el, idx) => {
+            el.addEventListener('click', () => {
+                const nota = idx + 1;
+                notaHidden.value = String(nota);
+                estrelas.forEach((s, i) => {
+                    if (i < nota) s.classList.replace('bi-star', 'bi-star-fill');
+                    else s.classList.replace('bi-star-fill', 'bi-star');
+                });
+            });
+        });
+
+        document.getElementById('btnEnviarDepoimento').addEventListener('click', () => {
+            const texto = (document.getElementById('campoDepoimento').value || '').trim();
+            const nota = parseInt(notaHidden.value || '0', 10);
+            if (!texto) { alert('Escreva um depoimento antes de enviar.'); return; }
+
+            // Em produção: AJAX -> config endpoint (ex.: a_curso_forum ou tabela específica)
+            // fetch('ajax_enviarDepoimento.php', { method:'POST', body: formData })
+            alert('Depoimento enviado! Obrigado pelo feedback 🌟');
+            document.getElementById('campoDepoimento').value = '';
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalDepoimento'));
+            modal.hide();
+        });
+
+        // --------- Exemplo de atualizar progresso dinamicamente (substituir pelo backend) ----------
+        // document.getElementById('pctBar').style.width = '80%';
+        // document.getElementById('pctLabel').textContent = '80%';
+    </script>
+
+    <!--
+    PONTOS DE INTEGRAÇÃO (PHP):
+    - Navbar: foto e nome do aluno.
+    - Cabeçalho: nome do módulo, total de lições assistidas/pendentes, % (barra).
+    - Aula: número e título, duração (opcional).
+    - Vídeo: src do player/iframe (YouTube, Plyr, JWPlayer, etc).
+    - Texto da aula: HTML vindos do banco (sanitize/escape).
+    - Botões do rodapé: rotas de "Voltar" e "Avançar" (aula anterior/próxima).
+    - Modal Depoimento: enviar via AJAX para sua tabela (ex.: a_curso_forum).
+    - Modal Anotações: substituir localStorage por persistência via AJAX (por usuário/módulo/aula).
+  -->
+</body>
+
+</html>

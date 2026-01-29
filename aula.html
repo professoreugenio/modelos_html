@@ -1,0 +1,159 @@
+<?php
+// Autenticação e dados do aluno
+// require APP_ROOT . '/autenticacao.php';
+// $nomeAluno = "João da Silva";
+// $fotoAluno = "/fotos/usuarios/pasta/imagem50.jpg";
+// $nomeCurso = "Excel Avançado";
+// $turma = "Turma 2025A";
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Aula -
+        <?= htmlspecialchars($nomeCurso ?? 'Curso Online') ?>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            background-color: #112240;
+            color: #fff;
+            min-height: 100vh;
+            padding-top: 1rem;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .sidebar a:hover {
+            background-color: #00BB9C;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+        <div class="container-fluid">
+            <button class="btn btn-outline-light me-3" id="toggleSidebar"><i class="bi bi-list"></i></button>
+            <a class="navbar-brand" href="#">Plataforma de Aulas</a>
+            <div class="d-flex align-items-center ms-auto">
+                <img src="<?= $fotoAluno ?? '/fotos/usuarios/default.jpg' ?>" alt="Foto do aluno"
+                    class="rounded-circle me-2" width="40" height="40">
+                <div class="text-white me-3">
+                    <strong>
+                        <?= htmlspecialchars($nomeAluno ?? 'Aluno') ?>
+                    </strong><br>
+                    <small>
+                        <?= htmlspecialchars($turma ?? '') ?>
+                    </small>
+                </div>
+                <a href="logout.php" class="btn btn-outline-danger btn-sm"><i class="bi bi-box-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top: 70px;">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar" id="sidebar">
+                <h6 class="text-uppercase px-3">Aulas</h6>
+                <a href="#" data-aos="fade-right"><i class="bi bi-play-circle me-2"></i> Aula 1 - Introdução</a>
+                <a href="#"><i class="bi bi-play-circle me-2"></i> Aula 2 - Conceitos</a>
+                <a href="#"><i class="bi bi-play-circle me-2"></i> Aula 3 - Prática</a>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="col-md-9 col-lg-10 p-4">
+                <h2 class="mb-4" data-aos="fade-up">
+                    <?= htmlspecialchars($tituloAula ?? 'Título da Aula') ?>
+                </h2>
+
+                <!-- Vídeo -->
+                <div class="video-container mb-4" data-aos="zoom-in">
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <!-- Materiais -->
+                <div class="card mb-4" data-aos="fade-up">
+                    <div class="card-header bg-primary text-white">
+                        <i class="bi bi-folder2-open me-2"></i> Materiais de Apoio
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-outline-secondary btn-sm me-2"><i class="bi bi-file-earmark-pdf"></i>
+                            Apostila</a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm"><i class="bi bi-file-earmark-excel"></i>
+                            Planilha de Exercício</a>
+                    </div>
+                </div>
+
+                <!-- Questionário -->
+                <div class="card" data-aos="fade-up">
+                    <div class="card-header bg-warning">
+                        <i class="bi bi-clipboard-check me-2"></i> Questionário da Aula
+                    </div>
+                    <div class="card-body">
+                        <form id="formQuestionario">
+                            <div class="mb-3">
+                                <label class="form-label">1. Pergunta de exemplo?</label>
+                                <textarea class="form-control" rows="3" name="pergunta1"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">2. Outra pergunta?</label>
+                                <input type="text" class="form-control" name="pergunta2">
+                            </div>
+                            <button type="submit" class="btn btn-success">Enviar Respostas</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Toggle Sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('d-none');
+        });
+    </script>
+</body>
+
+</html>
+

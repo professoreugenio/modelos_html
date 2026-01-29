@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página de Módulos — Professor Eugênio</title>
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-h1: #00BB9C;
+            --brand-h2: #FF9C00;
+            --brand-bg: #112240;
+            --brand-text: #ffffff;
+
+            --card-bg: rgba(255, 255, 255, .04);
+            --card-bd: rgba(255, 255, 255, .08);
+
+            --amber: #FF9C00;
+            --emerald: #00BB9C;
+            --indigo: #4F46E5;
+            --rose: #E11D48;
+            --slate: #94a3b8;
+        }
+
+        * {
+            scroll-margin-top: 96px
+        }
+
+        body {
+            background: var(--brand-bg);
+            color: var(--brand-text)
+        }
+
+        .navbar {
+            background: #0f1d36
+        }
+
+        .navbar .nav-link,
+        .navbar .navbar-brand {
+            color: #fff !important
+        }
+
+        .navbar .nav-link:hover {
+            opacity: .85
+        }
+
+        .navbar.navbar-dark .navbar-toggler {
+            border-color: rgba(255, 255, 255, .2)
+        }
+
+        .navbar.navbar-dark .navbar-toggler-icon {
+            filter: invert(1)
+        }
+
+        h1,
+        .h1 {
+            color: var(--brand-h1)
+        }
+
+        h2,
+        .h2 {
+            color: var(--brand-h2)
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-bd);
+            backdrop-filter: blur(2px);
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+            border-color: rgba(255, 255, 255, .16);
+        }
+
+        .card-colored {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            background-color: #076379;
+            background: #076379;
+        }
+
+        .card-colored::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+            z-index: -1;
+        }
+
+        /* “Pílula” com número da lição (varia por cor) */
+        .lesson-number {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12);
+        }
+
+        .ln-amber {
+            background: linear-gradient(135deg, #7a4300, var(--amber));
+        }
+
+        .ln-emerald {
+            background: linear-gradient(135deg, #064e3b, var(--emerald));
+        }
+
+        .ln-indigo {
+            background: linear-gradient(135deg, #1e1b4b, var(--indigo));
+        }
+
+        .ln-rose {
+            background: linear-gradient(135deg, #7f1d1d, var(--rose));
+        }
+
+        /* Badges e chips */
+        .badge-soft {
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .12);
+            color: #e2e8f0;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .35rem .6rem;
+            border-radius: 999px;
+            font-size: .8rem;
+            line-height: 1;
+            border: 1px solid rgba(255, 255, 255, .14);
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .chip i {
+            opacity: .9
+        }
+
+        /* Lista completa com faixa lateral por status */
+        .list-group-item {
+            background: rgba(255, 255, 255, .03);
+            border-color: rgba(255, 255, 255, .08);
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+        }
+
+        .lg-stripe {
+            width: 4px;
+            align-self: stretch;
+            border-radius: 4px;
+            margin-right: .75rem;
+            opacity: .9;
+        }
+
+        .stripe-done {
+            background: var(--emerald);
+        }
+
+        .stripe-pending {
+            background: var(--slate);
+        }
+
+        .stripe-late {
+            background: var(--rose);
+        }
+
+        /* Botões temáticos */
+        .btn-cta {
+            background: var(--brand-h2);
+            color: #111;
+            border: 0;
+            font-weight: 700
+        }
+
+        .btn-cta:hover {
+            filter: brightness(.95)
+        }
+
+        .btn-amber {
+            background: var(--amber);
+            color: #111;
+            border: 0
+        }
+
+        .btn-amber:hover {
+            filter: brightness(.95)
+        }
+
+        .btn-emerald {
+            background: var(--emerald);
+            color: #0b1c17;
+            border: 0
+        }
+
+        .btn-emerald:hover {
+            filter: brightness(.95)
+        }
+
+        .btn-indigo {
+            background: var(--indigo);
+            color: #fff;
+            border: 0
+        }
+
+        .btn-indigo:hover {
+            filter: brightness(1.05)
+        }
+
+        .btn-outline-light {
+            --bs-btn-color: #e5e7eb;
+            --bs-btn-border-color: #e5e7eb;
+            --bs-btn-hover-bg: #e5e7eb;
+            --bs-btn-hover-color: #0f172a;
+            --bs-btn-hover-border-color: #e5e7eb;
+        }
+
+        /* Barra de progresso */
+        .progress {
+            background: rgba(255, 255, 255, .08);
+            height: 10px
+        }
+
+        .progress-bar {
+            background: var(--brand-h1)
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, .2)
+        }
+
+        .section-gap {
+            padding-top: 24px;
+            padding-bottom: 24px
+        }
+
+        /* Mini helpers */
+        .text-muted-2 {
+            color: #cbd5e1 !important
+        }
+
+        .shadow-soft {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .25)
+        }
+
+        .rounded-4 {
+            border-radius: 1rem !important
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <!-- DINÂMICO: foto/nome do aluno -->
+                <img src="https://professoreugenio.com/fotos/usuarios/usuario.png" alt="Foto do aluno" class="avatar">
+                <span class="fw-semibold">Nome do Aluno</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nv"
+                aria-controls="nv" aria-expanded="false" aria-label="Menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="nv" class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-house-door me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-mortarboard me-1"></i>Curso</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-chat-dots me-1"></i>Contato</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="#"><i
+                                class="bi bi-x-circle me-1"></i>Fechar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CABEÇALHO / TÍTULO DO MÓDULO -->
+    <header class="container section-gap">
+        <div class="row align-items-center g-3">
+            <div class="col-lg-8" data-aos="fade-right">
+                <!-- DINÂMICO: nome do módulo -->
+                <h1 class="h3 mb-2">Nome do Módulo</h1>
+                <div class="d-flex align-items-center gap-3">
+                    <!-- DINÂMICO: progresso -->
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between small mb-1">
+                            <span>Progresso do módulo</span>
+                            <span><strong id="pctLabel">64%</strong></span>
+                        </div>
+                        <div class="progress rounded-pill">
+                            <div class="progress-bar" id="pctBar" role="progressbar" style="width:64%"
+                                aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <span class="chip"><i class="bi bi-collection-play"></i> 18 de 28 lições</span>
+                </div>
+            </div>
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <a href="#" class="btn btn-emerald rounded-3 shadow-soft">
+                    <i class="bi bi-grid-3x3-gap me-2"></i>Ver todos os módulos
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PRIMEIRAS 4 LIÇÕES EM CARDS -->
+    <section class="container section-gap">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="h5 m-0">Continue de onde parou</h2>
+            <a href="#lista-licoes" class="text-decoration-none small">Ver lista completa <i
+                    class="bi bi-arrow-down-short"></i></a>
+        </div>
+
+        <div class="row g-3">
+            <!-- CARD 1 (Assistida – verde) -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up">
+                <div class="card card-colored h-100 rounded-4 p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="lesson-number ln-emerald">01</div>
+                        <span class="badge badge-soft">10 min</span>
+                    </div>
+                    <h3 class="h6 mt-3 mb-2">Introdução ao Windows</h3>
+                    <p class="small text-muted-2 mb-3">Primeiros passos e configurações básicas.</p>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-emerald btn-sm"><i class="bi bi-play-circle me-1"></i> Ir para a
+                            aula</a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-check2-circle me-1"></i>
+                            Assistida</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 (Pendente – âmbar) -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+                <div class="card card-colored h-100 rounded-4 p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="lesson-number ln-amber">02</div>
+                        <span class="badge badge-soft">15 min</span>
+                    </div>
+                    <h3 class="h6 mt-3 mb-2">Atalhos Essenciais</h3>
+                    <p class="small text-muted-2 mb-3">Produtividade com Ctrl+C, Ctrl+V e mais.</p>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-amber btn-sm"><i class="bi bi-play-circle me-1"></i> Ir para a
+                            aula</a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-circle me-1"></i> Pendente</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 (Assistida – índigo só para variar o visual) -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="card card-colored h-100 rounded-4 p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="lesson-number ln-indigo">03</div>
+                        <span class="badge badge-soft">12 min</span>
+                    </div>
+                    <h3 class="h6 mt-3 mb-2">Organização de Pastas</h3>
+                    <p class="small text-muted-2 mb-3">Estrutura e boas práticas de arquivos.</p>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-indigo btn-sm"><i class="bi bi-play-circle me-1"></i> Ir para a
+                            aula</a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-check2-circle me-1"></i>
+                            Assistida</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4 (Pendente – rosa: atraso/pendência maior, se quiser) -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+                <div class="card card-colored h-100 rounded-4 p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="lesson-number ln-rose">04</div>
+                        <span class="badge badge-soft">20 min</span>
+                    </div>
+                    <h3 class="h6 mt-3 mb-2">Navegação na Web</h3>
+                    <p class="small text-muted-2 mb-3">Segurança, favoritos e histórico.</p>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-amber btn-sm"><i class="bi bi-play-circle me-1"></i> Ir para a
+                            aula</a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-exclamation-circle me-1"></i>
+                            Pendente</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LISTA COMPLETA DE LIÇÕES -->
+    <section class="container section-gap" id="lista-licoes">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="h5 m-0">Todas as lições do módulo</h2>
+            <div class="d-flex gap-2">
+                <span class="chip"><i class="bi bi-check2-circle"></i> Assistidas: 18</span>
+                <span class="chip"><i class="bi bi-dot"></i> Pendentes: 10</span>
+            </div>
+        </div>
+
+        <div class="list-group rounded-4 overflow-hidden">
+            <!-- ITEM (Assistida) -->
+            <a href="#" class="list-group-item list-group-item-action">
+                <span class="lg-stripe stripe-done"></span>
+                <span class="lesson-number me-3 ln-emerald">01</span>
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-white">Introdução ao Windows</strong>
+                        <small class="text-muted-2">10 min</small>
+                    </div>
+                    <small class="text-muted-2">Status: <span class="text-success fw-semibold">Assistida</span></small>
+                </div>
+                <i class="bi bi-check-circle ms-3 text-success"></i>
+            </a>
+
+            <!-- ITEM (Pendente) -->
+            <a href="#" class="list-group-item list-group-item-action">
+                <span class="lg-stripe stripe-pending"></span>
+                <span class="lesson-number me-3 ln-amber">02</span>
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-white">Atalhos Essenciais</strong>
+                        <small class="text-muted-2">15 min</small>
+                    </div>
+                    <small class="text-muted-2">Status: <span class="text-warning fw-semibold">Pendente</span></small>
+                </div>
+                <i class="bi bi-circle ms-3 text-warning"></i>
+            </a>
+
+            <!-- ITEM (Assistida) -->
+            <a href="#" class="list-group-item list-group-item-action">
+                <span class="lg-stripe stripe-done"></span>
+                <span class="lesson-number me-3 ln-indigo">03</span>
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-white">Organização de Pastas</strong>
+                        <small class="text-muted-2">12 min</small>
+                    </div>
+                    <small class="text-muted-2">Status: <span class="text-success fw-semibold">Assistida</span></small>
+                </div>
+                <i class="bi bi-check-circle ms-3 text-success"></i>
+            </a>
+
+            <!-- ...repita para todas as lições -->
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="container section-gap">
+        <div class="text-center small text-muted-2">
+            © <span id="ano"></span> Professor Eugênio — Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });
+        document.getElementById('ano').textContent = new Date().getFullYear();
+
+        // EXEMPLO: atualizar progresso dinamicamente (troque pelo valor do backend)
+        // document.getElementById('pctBar').style.width = '80%';
+        // document.getElementById('pctLabel').textContent = '80%';
+    </script>
+
+    <!--
+    PONTOS DE INTEGRAÇÃO (PHP):
+    - Navbar: foto/nome do aluno.
+    - Header: nome do módulo, % progresso (pctBar / pctLabel), total de lições.
+    - Cards: loop nas 4 primeiras lições (LIMIT 4 ORDER BY ordem), escolha de cor:
+        Assistida  -> ln-emerald  + botão secundário "Assistida"
+        Pendente   -> ln-amber    + botão "Ir para a aula"
+        Atrasada   -> ln-rose     (se houver lógica)
+        Neutra     -> ln-indigo   (variação estética)
+    - Lista completa: ORDER BY ordem, stripes por status (stripe-done/pending/late).
+    - Status: consultar a_aluno_andamento_aula.
+  -->
+</body>
+
+</html>
